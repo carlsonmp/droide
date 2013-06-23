@@ -20,11 +20,13 @@ void moveT(int uno, int dos, int tres, int cuatro, int cinco, int seis, int siet
 //CALCULO DE VELOCIDADES Y POSICIONAMIENTO
 
   for(int i=1; i<19; i++){   
-    Dxl.writeWord(i, 32,(abs(Dxl.readWord(i, 36)-posicion[i])/tiempo)*0.65);   //Se escribe la velocidad en cada servo 
+    Dxl.writeWord(i, 32,(abs(Dxl.readWord(i, 36)-posicion[i])/tiempo)*0.42);   //Se escribe la velocidad en cada servo 
                                                                                //El factor 0,65 es para que acorden las unidades                                                                       
     Dxl.writeWord(i, 30, posicion[i]);  //Posicionamiento del servo i en posicion[i]
-  }  
-  delay(tiempo*1000);
+  }
+  tiempo=tiempo*1000;
+  if(tiempo>100) tiempo=tiempo-100;  
+  delay(tiempo);
 }
 
 
